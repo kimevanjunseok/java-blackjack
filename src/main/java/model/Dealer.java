@@ -2,7 +2,7 @@ package model;
 
 import static controller.BlackJackGame.HIT_BOUNDARY;
 
-public class Dealer extends User {
+public class Dealer extends BlackJackGameUser {
     public static final int ZERO = 0;
     public static final String DEALER_NAME = "딜러";
 

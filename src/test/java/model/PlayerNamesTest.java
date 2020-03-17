@@ -1,10 +1,12 @@
 package model;
 
 import exception.IllegalStringInputException;
+import exception.PlayerNamesOverlapException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -41,5 +43,14 @@ public class PlayerNamesTest {
         PlayerNames names = new PlayerNames(input);
         assertThat(names.contains(expected)).isTrue();
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,pobi", "crong,crong"})
+    void overlap_test(String input) {
+        assertThatThrownBy(() -> new PlayerNames(input)
+        ).isInstanceOf(PlayerNamesOverlapException.class)
+                .hasMessageMatching("사용자 이름은 중복될 수 없습니다.");
+    }
 }
+
 

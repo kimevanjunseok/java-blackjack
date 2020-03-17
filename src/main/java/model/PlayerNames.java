@@ -1,5 +1,6 @@
 package model;
 
+import exception.PlayerNamesOverlapException;
 import utils.StringUtils;
 
 import java.util.*;
@@ -17,6 +18,15 @@ public class PlayerNames implements Iterable<String> {
     private void validate(String input) {
         StringUtils.validateNull(input);
         validateSplit(input);
+        validateOverlap(input);
+    }
+
+    private void validateOverlap(String input) {
+        String[] names = input.split(COMMA);
+        if(names.length != Arrays.stream(names).distinct().count())
+        {
+            throw new PlayerNamesOverlapException("사용자 이름은 중복될 수 없습니다.");
+        }
     }
 
     private void validateSplit(String input) {

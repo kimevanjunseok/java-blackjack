@@ -42,8 +42,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printPlayerCard(User user) {
-        System.out.print(NEW_LINE + user.getName() + DELIMITER + user.toStringCardHand());
+    public static void printPlayerCard(BlackJackGameUser blackJackGameUser) {
+        System.out.print(NEW_LINE + blackJackGameUser.getName() + DELIMITER + blackJackGameUser.toStringCardHand());
     }
 
     public static void printDealerDraw(Dealer dealer) {

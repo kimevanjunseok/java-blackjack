@@ -5,18 +5,18 @@ import java.util.List;
 
 import static controller.BlackJackGame.*;
 
-public abstract class User {
+public abstract class BlackJackGameUser {
     public static final String DELIMITER = ", ";
 
     protected final String name;
     protected final CardHand cardHand;
 
-    public User(String name, Deck deck, int initialDrawCount) {
+    public BlackJackGameUser(String name, Deck deck, int initialDrawCount) {
         this.name = name;
         this.cardHand = deck.draw(initialDrawCount);
     }
 
-    public static int compare(final User dealer, final User player) {
+    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
         return Integer.compare(dealer.getScore(), player.getScore());
     }
 

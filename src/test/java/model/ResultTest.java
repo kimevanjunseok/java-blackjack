@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static controller.BlackJackGame.ADDITIONAL_DRAW_COUNT;
 import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
-import static model.UserTest.PLAYER_NAME;
+import static model.BlackJackGameUserTest.PLAYER_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultTest {

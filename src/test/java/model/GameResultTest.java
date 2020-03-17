@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
-import static model.UserTest.PLAYER_NAME;
+import static model.BlackJackGameUserTest.PLAYER_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {

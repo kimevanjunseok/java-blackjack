@@ -8,7 +8,7 @@ import static controller.BlackJackGame.ADDITIONAL_DRAW_COUNT;
 import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserTest {
+public class BlackJackGameUserTest {
     public static final String PLAYER_NAME = "DD";
     CardHand bustHand = new CardHand();
     CardHand notBustHand = new CardHand();
@@ -29,7 +29,7 @@ public class UserTest {
     @Test
     @DisplayName("딜러 이름 테스트")
     void dealer_Name() {
-        User dealer = new Dealer(notBustDeck, INITIAL_DRAW_COUNT);
+        BlackJackGameUser dealer = new Dealer(notBustDeck, INITIAL_DRAW_COUNT);
         assertThat(dealer.getName()).isEqualTo("딜러");
     }
 
