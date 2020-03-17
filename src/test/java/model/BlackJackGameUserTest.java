@@ -12,6 +12,7 @@ public class BlackJackGameUserTest {
     public static final String PLAYER_NAME = "DD";
     CardHand bustHand = new CardHand();
     CardHand notBustHand = new CardHand();
+    BettingMoney bettingMoney = new BettingMoney("100");
     Deck bustDeck;
     Deck notBustDeck;
 
@@ -36,14 +37,14 @@ public class BlackJackGameUserTest {
     @Test
     @DisplayName("이름을 불러오는 지 테스트")
     void name_Test() {
-        Player player = new Player(PLAYER_NAME, notBustDeck, INITIAL_DRAW_COUNT);
+        Player player = new Player(PLAYER_NAME, bettingMoney, notBustDeck, INITIAL_DRAW_COUNT);
         assertThat(player.getName()).isEqualTo(PLAYER_NAME);
     }
 
     @Test
     @DisplayName("21을 넘는 지")
     void isBust_Player_Test() {
-        Player player = new Player(PLAYER_NAME, bustDeck, INITIAL_DRAW_COUNT);
+        Player player = new Player(PLAYER_NAME, bettingMoney, bustDeck, INITIAL_DRAW_COUNT);
         player.drawCard(bustDeck, ADDITIONAL_DRAW_COUNT);
         assertThat(player.isBust()).isTrue();
     }

@@ -4,6 +4,10 @@ import model.*;
 import view.InputView;
 import view.OutputView;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class BlackJackGame {
     public static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final int INITIAL_DRAW_COUNT = 2;
@@ -13,11 +17,12 @@ public class BlackJackGame {
     public static void play() {
         Deck deck = new Deck(CardFactory.createCardList());
         PlayerNames playerNames = new PlayerNames(InputView.inputPlayerNames());
-        Players players = new Players(playerNames, deck, INITIAL_DRAW_COUNT);
+        PlayersData playersData = new PlayersData(makePlayersData(playerNames));
+        Players players = new Players(playersData, deck, INITIAL_DRAW_COUNT);
         Dealer dealer = new Dealer(deck, INITIAL_DRAW_COUNT);
-
         OutputView.printInitialCards(players, dealer);
         OutputView.printUsersCard(players, dealer);
+
         drawCardToPlayers(players, deck);
         hitOrStayForDealer(dealer, deck);
         OutputView.printFinalCardHandResult(players, dealer);
@@ -25,6 +30,14 @@ public class BlackJackGame {
         GameResult gameResult = new GameResult(players, dealer);
         gameResult.calculateResults();
         OutputView.printResult(gameResult);
+    }
+
+    private static Map<String, BettingMoney> makePlayersData(PlayerNames playerNames) {
+        Map<String, BettingMoney> playerData = new HashMap<>();
+        for (String name : playerNames) {
+            playerData.put(name, new BettingMoney(InputView.inputBettingMoney(name)));
+        }
+        return Collections.unmodifiableMap(playerData);
     }
 
     private static void drawCardToPlayers(final Players players, final Deck deck) {

@@ -16,6 +16,7 @@ public class ResultTest {
     Deck bustDeck1;
     Deck bustDeck2;
     Deck notBustDeck1;
+    BettingMoney bettingMoney = new BettingMoney("100");
 
     @BeforeEach
     void init_field() {
@@ -36,7 +37,7 @@ public class ResultTest {
     @Test
     @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 플레이 DRAW")
     void both_isBust_Test() {
-        Player player = new Player(PLAYER_NAME, bustDeck1, INITIAL_DRAW_COUNT);
+        Player player = new Player(PLAYER_NAME, bettingMoney, bustDeck1, INITIAL_DRAW_COUNT);
         Dealer dealer = new Dealer(bustDeck2, INITIAL_DRAW_COUNT);
         player.drawCard(bustDeck1, ADDITIONAL_DRAW_COUNT);
         dealer.drawCard(bustDeck2, ADDITIONAL_DRAW_COUNT);
@@ -46,7 +47,7 @@ public class ResultTest {
     @Test
     @DisplayName("딜러만 21을 넘긴 경우 플레이어 WIN")
     void Dealer_isBust_Test() {
-        Player player = new Player(PLAYER_NAME, notBustDeck1, INITIAL_DRAW_COUNT);
+        Player player = new Player(PLAYER_NAME, bettingMoney, notBustDeck1, INITIAL_DRAW_COUNT);
         Dealer dealer = new Dealer(bustDeck1, INITIAL_DRAW_COUNT);
         dealer.drawCard(bustDeck1, ADDITIONAL_DRAW_COUNT);
         assertThat(Result.compete(dealer, player) == Result.WIN).isTrue();

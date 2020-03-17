@@ -36,7 +36,7 @@ public abstract class BlackJackGameUser {
     }
 
     public boolean isBust() {
-        return getScore() > BLACK_JACK_COUNT;
+        return getScore() >= BLACK_JACK_COUNT;
     }
 
     public int getScore() {

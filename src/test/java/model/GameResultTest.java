@@ -17,6 +17,7 @@ class GameResultTest {
     Deck deckWin1;
     Deck deckWin2;
     Deck deckLose;
+    BettingMoney bettingMoney = new BettingMoney("100");
     List<Player> players = new ArrayList<>();
     Dealer dealer;
 
@@ -31,8 +32,8 @@ class GameResultTest {
         deckWin1 = new Deck(cardHandWin1);
         deckWin2 = new Deck(cardHandWin2);
         deckLose = new Deck(cardHandLose);
-        players.add(new Player(PLAYER_NAME, deckWin1, INITIAL_DRAW_COUNT));
-        players.add(new Player(PLAYER_NAME, deckWin2, INITIAL_DRAW_COUNT));
+        players.add(new Player(PLAYER_NAME, bettingMoney, deckWin1, INITIAL_DRAW_COUNT));
+        players.add(new Player(PLAYER_NAME, bettingMoney, deckWin2, INITIAL_DRAW_COUNT));
         dealer = new Dealer(deckLose, INITIAL_DRAW_COUNT);
     }
 

@@ -5,9 +5,9 @@ import java.util.*;
 public class Players implements Iterable<Player> {
     private final List<Player> players = new ArrayList<>();
 
-    public Players(PlayerNames names, Deck deck, int initialDrawCount) {
-        for (String name : names) {
-            players.add(new Player(name, deck, initialDrawCount));
+    public Players(PlayersData data, Deck deck, int initialDrawCount) {
+        for (String name : data.getNames()) {
+            players.add(new Player(name, data.getBettingMoney(name), deck, initialDrawCount));
         }
     }
 

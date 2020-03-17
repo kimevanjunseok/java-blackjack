@@ -1,7 +1,10 @@
 package model;
 
 public class Player extends BlackJackGameUser {
-    public Player(String name, Deck deck, int initialDrawCount) {
+    private final BettingMoney bettingMoney;
+
+    public Player(String name, BettingMoney bettingMoney, Deck deck, int initialDrawCount) {
         super(name, deck, initialDrawCount);
+        this.bettingMoney = bettingMoney;
     }
 }
