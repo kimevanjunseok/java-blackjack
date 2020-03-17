@@ -3,18 +3,27 @@ package model;
 import exception.IllegalResultException;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public enum Result {
-    WIN("승", -1),
-    LOSE("패", 1),
-    DRAW("무", 0);
+    BLACKJACK("블랙잭", -2, (dealer, player) -> {
+        if (dealer.isBlackJack()) {
+            return 0.0;
+        }
+        return player.getBettingMoney() * 1.5;
+    }),
+    WIN("승", -1, (dealer, player) -> player.getBettingMoney()),
+    LOSE("패", 1, (dealer, player) -> player.getBettingMoney() * -1),
+    DRAW("무", 0, (dealer, player) -> 0.0);
 
     String result;
     int resultValue;
+    BiFunction<Dealer, Player, Double> operate;
 
-    Result(String result, int resultValue) {
+    Result(String result, int resultValue, BiFunction<Dealer, Player, Double> operate) {
         this.result = result;
         this.resultValue = resultValue;
+        this.operate = operate;
     }
 
     @Override
@@ -22,7 +31,14 @@ public enum Result {
         return result;
     }
 
+    public double calculateRevenue(Dealer dealer, Player player){
+        return operate.apply(dealer, player);
+    }
+
     public static Result compete(Dealer dealer, Player player) {
+        if (player.isBlackJack()) {
+            return BLACKJACK;
+        }
         if (dealer.isBust() && player.isBust()) {
             return DRAW;
         }

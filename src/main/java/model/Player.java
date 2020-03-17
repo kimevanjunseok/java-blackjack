@@ -7,4 +7,8 @@ public class Player extends BlackJackGameUser {
         super(name, deck, initialDrawCount);
         this.bettingMoney = bettingMoney;
     }
+
+    public double getBettingMoney() {
+        return bettingMoney.getBettingMoney();
+    }
 }

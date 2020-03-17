@@ -5,7 +5,7 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BlackJackGame {
@@ -28,12 +28,11 @@ public class BlackJackGame {
         OutputView.printFinalCardHandResult(players, dealer);
 
         GameResult gameResult = new GameResult(players, dealer);
-        gameResult.calculateResults();
         OutputView.printResult(gameResult);
     }
 
     private static Map<String, BettingMoney> makePlayersData(PlayerNames playerNames) {
-        Map<String, BettingMoney> playerData = new HashMap<>();
+        Map<String, BettingMoney> playerData = new LinkedHashMap<>();
         for (String name : playerNames) {
             playerData.put(name, new BettingMoney(InputView.inputBettingMoney(name)));
         }
@@ -47,7 +46,7 @@ public class BlackJackGame {
     }
 
     private static void drawCardEachPlayer(Deck deck, Player player) {
-        while (!player.isBust()) {
+        while (!player.isMoreThanBlackJack()) {
             Answer answer = Answer.getYesOrNoByValue(InputView.inputYesOrNo(player));
             if (!answer.getTrueOrFalse()) {
                 break;

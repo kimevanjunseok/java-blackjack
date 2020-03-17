@@ -5,9 +5,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import static controller.BlackJackGame.BLACK_JACK_COUNT;
+
 public class CardHand implements Iterable<Card> {
     public static final int ADDITIONAL_ACE_SCORE = 10;
-    public static final int BLACK_JACK_SCORE = 21;
 
     private List<Card> cards = new ArrayList<>();
 
@@ -24,7 +25,7 @@ public class CardHand implements Iterable<Card> {
 
     public int calculateScoreWithAce() {
         int score = calculateScoreWithNoAce();
-        if (score + ADDITIONAL_ACE_SCORE > BLACK_JACK_SCORE) {
+        if (score + ADDITIONAL_ACE_SCORE > BLACK_JACK_COUNT) {
             return score;
         }
         return score + ADDITIONAL_ACE_SCORE;
@@ -47,5 +48,17 @@ public class CardHand implements Iterable<Card> {
     @Override
     public Iterator<Card> iterator() {
         return cards.iterator();
+    }
+
+    public boolean isBlackJack() {
+        return calculateScore() == BLACK_JACK_COUNT;
+    }
+
+    public boolean isBust() {
+        return calculateScore() > BLACK_JACK_COUNT;
+    }
+
+    public boolean isMoreThanBlackJack() {
+        return calculateScore() >= BLACK_JACK_COUNT;
     }
 }

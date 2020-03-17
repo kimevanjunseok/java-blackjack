@@ -36,7 +36,11 @@ public abstract class BlackJackGameUser {
     }
 
     public boolean isBust() {
-        return getScore() >= BLACK_JACK_COUNT;
+        return cardHand.isBust();
+    }
+
+    public boolean isMoreThanBlackJack(){
+        return cardHand.isMoreThanBlackJack();
     }
 
     public int getScore() {
@@ -46,4 +50,8 @@ public abstract class BlackJackGameUser {
     public String getName() {
         return name;
     }
+
+    public boolean isBlackJack() {
+        return cardHand.isBlackJack();
+    };
 }

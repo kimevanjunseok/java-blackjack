@@ -68,26 +68,23 @@ public class OutputView {
     }
 
     public static void printResult(final GameResult gameResult) {
-        System.out.println(NEW_LINE + NEW_LINE + "## 최종 승패");
+        System.out.println(NEW_LINE + NEW_LINE + "## 최종 수익");
         printDealerResult(gameResult.getDealerResult());
         printPlayersResult(gameResult.getPlayerResult());
     }
 
-    public static void printDealerResult(final Map<Result, Integer> result) {
+    public static void printDealerResult(final Revenue result) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(DEALER_NAME)
                 .append(DELIMITER)
-                .append(result.get(Result.WIN))
-                .append("승 ")
-                .append(result.get(Result.LOSE))
-                .append("패");
+                .append(result.getRevenue());
         System.out.println(stringBuilder.toString());
     }
 
-    private static void printPlayersResult(final Map<Player, Result> result) {
+    private static void printPlayersResult(final Map<Player, Revenue> result) {
         for (Player player : result.keySet()) {
             System.out.print(player.getName() + DELIMITER);
-            System.out.println(result.get(player).toString());
+            System.out.println(result.get(player).getRevenue());
         }
     }
 }
