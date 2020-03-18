@@ -2,9 +2,9 @@ package model;
 
 import exception.IllegalBettingMoneyFormatException;
 
-import static controller.BlackJackGame.LOWER_MONEY_BOUND;
-
 public class BettingMoney {
+    private static final int LOWER_MONEY_BOUND = 100;
+
     private final double bettingMoney;
 
     public BettingMoney(String input) {

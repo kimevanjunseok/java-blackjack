@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 import static controller.BlackJackGame.*;
 
 public class CardHand implements Iterable<Card> {
-    public static final int ADDITIONAL_ACE_SCORE = 10;
+    private static final int ADDITIONAL_ACE_SCORE = 10;
+    private static final int BLACK_JACK_COUNT = 21;
 
     private List<Card> cards = new ArrayList<>();
 

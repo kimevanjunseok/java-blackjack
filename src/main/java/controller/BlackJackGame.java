@@ -9,10 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BlackJackGame {
-    public static final int LOWER_MONEY_BOUND = 100;
     private static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final int INITIAL_DRAW_COUNT = 2;
-    public static final int BLACK_JACK_COUNT = 21;
     public static final String COMMA = ",";
 
     public static void play() {
