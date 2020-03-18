@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static controller.BlackJackGame.BLACK_JACK_COUNT;
+import static controller.BlackJackGame.*;
 
 public class CardHand implements Iterable<Card> {
     public static final int ADDITIONAL_ACE_SCORE = 10;
@@ -41,6 +42,18 @@ public class CardHand implements Iterable<Card> {
         return cards.stream().anyMatch(Card::isAce);
     }
 
+    public boolean isBust() {
+        return calculateScore() > BLACK_JACK_COUNT;
+    }
+
+    public boolean isBlackJack() {
+        return calculateScore() == BLACK_JACK_COUNT && cards.size() == INITIAL_DRAW_COUNT;
+    }
+
+    public boolean isMoreThanBlackJack() {
+        return calculateScore() >= BLACK_JACK_COUNT;
+    }
+
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
     }
@@ -50,15 +63,12 @@ public class CardHand implements Iterable<Card> {
         return cards.iterator();
     }
 
-    public boolean isBlackJack() {
-        return calculateScore() == BLACK_JACK_COUNT;
-    }
+    @Override
+    public String toString() {
+        List<String> cardNames = cards.stream()
+                .map(Card::toString)
+                .collect(Collectors.toList());
 
-    public boolean isBust() {
-        return calculateScore() > BLACK_JACK_COUNT;
-    }
-
-    public boolean isMoreThanBlackJack() {
-        return calculateScore() >= BLACK_JACK_COUNT;
+        return String.join(COMMA, cardNames);
     }
 }

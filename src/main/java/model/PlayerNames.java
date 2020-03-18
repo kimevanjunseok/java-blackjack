@@ -5,9 +5,9 @@ import utils.StringUtils;
 
 import java.util.*;
 
-public class PlayerNames implements Iterable<String> {
-    private static final String COMMA = ",";
+import static controller.BlackJackGame.COMMA;
 
+public class PlayerNames implements Iterable<String> {
     private final List<String> names;
 
     public PlayerNames(String input) {
@@ -23,8 +23,7 @@ public class PlayerNames implements Iterable<String> {
 
     private void validateOverlap(String input) {
         String[] names = input.split(COMMA);
-        if(names.length != Arrays.stream(names).distinct().count())
-        {
+        if (names.length != Arrays.stream(names).distinct().count()) {
             throw new PlayerNamesOverlapException("사용자 이름은 중복될 수 없습니다.");
         }
     }

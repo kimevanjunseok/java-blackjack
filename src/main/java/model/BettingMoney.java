@@ -7,17 +7,18 @@ public class BettingMoney {
 
     public BettingMoney(String input) {
         validate(input);
-        this.bettingMoney=Integer.parseInt(input);
+        this.bettingMoney = Integer.parseInt(input);
     }
 
-    private void validate(String input){
+    private void validate(String input) {
         validateFormat(input);
         validateRange(Integer.parseInt(input));
     }
+
     private void validateFormat(String input) {
-        try{
+        try {
             Integer.parseInt(input);
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalBettingMoneyFormatException("배팅 금액은 100이상의 숫자만 입력 가능합니다.");
         }
     }
@@ -28,7 +29,7 @@ public class BettingMoney {
         }
     }
 
-    public int getBettingMoney() {
-        return bettingMoney;
+    public double multiplyBettingMoney(double factor) {
+        return bettingMoney * factor;
     }
 }

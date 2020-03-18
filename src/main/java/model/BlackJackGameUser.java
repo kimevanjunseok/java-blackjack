@@ -1,13 +1,9 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static controller.BlackJackGame.*;
 
 public abstract class BlackJackGameUser {
-    public static final String DELIMITER = ", ";
-
     protected final String name;
     protected final CardHand cardHand;
 
@@ -16,17 +12,16 @@ public abstract class BlackJackGameUser {
         this.cardHand = deck.draw(initialDrawCount);
     }
 
-    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
-        return Integer.compare(dealer.getScore(), player.getScore());
+    public BlackJackGameUser(String name, List<Card> cards) {
+        this.name = name;
+        this.cardHand = new CardHand();
+        for (Card card : cards) {
+            cardHand.addCard(card);
+        }
     }
 
-    public String toStringCardHand() {
-        List<String> cardNames = new ArrayList<>();
-
-        for (Card card : cardHand) {
-            cardNames.add(card.toString());
-        }
-        return String.join(DELIMITER, cardNames);
+    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
+        return Integer.compare(dealer.getScore(), player.getScore());
     }
 
     public void drawCard(Deck deck, int drawCount) {
@@ -39,8 +34,16 @@ public abstract class BlackJackGameUser {
         return cardHand.isBust();
     }
 
-    public boolean isMoreThanBlackJack(){
+    public boolean isBlackJack() {
+        return cardHand.isBlackJack();
+    }
+
+    public boolean isMoreThanBlackJack() {
         return cardHand.isMoreThanBlackJack();
+    }
+
+    public String toStringCardHand() {
+        return cardHand.toString();
     }
 
     public int getScore() {
@@ -50,8 +53,4 @@ public abstract class BlackJackGameUser {
     public String getName() {
         return name;
     }
-
-    public boolean isBlackJack() {
-        return cardHand.isBlackJack();
-    };
 }

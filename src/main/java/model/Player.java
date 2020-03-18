@@ -1,5 +1,8 @@
 package model;
 
+
+import java.util.List;
+
 public class Player extends BlackJackGameUser {
     private final BettingMoney bettingMoney;
 
@@ -8,7 +11,12 @@ public class Player extends BlackJackGameUser {
         this.bettingMoney = bettingMoney;
     }
 
-    public double getBettingMoney() {
-        return bettingMoney.getBettingMoney();
+    public Player(String name, List<Card> cards) {
+        super(name, cards);
+        this.bettingMoney = new BettingMoney("100");
+    }
+
+    public double multiplyBettingMoney(double factor) {
+        return bettingMoney.multiplyBettingMoney(factor);
     }
 }

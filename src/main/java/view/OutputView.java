@@ -70,21 +70,21 @@ public class OutputView {
     public static void printResult(final GameResult gameResult) {
         System.out.println(NEW_LINE + NEW_LINE + "## 최종 수익");
         printDealerResult(gameResult.getDealerResult());
-        printPlayersResult(gameResult.getPlayerResult());
+        printPlayersResult(gameResult.getPlayersResult());
     }
 
     public static void printDealerResult(final Revenue result) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(DEALER_NAME)
                 .append(DELIMITER)
-                .append(result.getRevenue());
+                .append((int)result.getRevenue());
         System.out.println(stringBuilder.toString());
     }
 
     private static void printPlayersResult(final Map<Player, Revenue> result) {
         for (Player player : result.keySet()) {
             System.out.print(player.getName() + DELIMITER);
-            System.out.println(result.get(player).getRevenue());
+            System.out.println((int)result.get(player).getRevenue());
         }
     }
 }

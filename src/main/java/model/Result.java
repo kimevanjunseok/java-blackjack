@@ -3,44 +3,39 @@ package model;
 import exception.IllegalResultException;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+
+import static controller.BlackJackGame.*;
 
 public enum Result {
-    BLACKJACK("블랙잭", -2, (dealer, player) -> {
-        if (dealer.isBlackJack()) {
-            return 0.0;
-        }
-        return player.getBettingMoney() * 1.5;
-    }),
-    WIN("승", -1, (dealer, player) -> player.getBettingMoney()),
-    LOSE("패", 1, (dealer, player) -> player.getBettingMoney() * -1),
-    DRAW("무", 0, (dealer, player) -> 0.0);
+    BLACKJACK(-2, BLACK_JACK_RATIO),
+    WIN(-1, WIN_RATIO),
+    LOSE(1, LOSE_RATIO),
+    DRAW(0, DRAW_RATIO);
 
-    String result;
     int resultValue;
-    BiFunction<Dealer, Player, Double> operate;
+    double ratio;
 
-    Result(String result, int resultValue, BiFunction<Dealer, Player, Double> operate) {
-        this.result = result;
+    Result(int resultValue, double ratio) {
         this.resultValue = resultValue;
-        this.operate = operate;
+        this.ratio = ratio;
     }
 
-    @Override
-    public String toString() {
-        return result;
-    }
-
-    public double calculateRevenue(Dealer dealer, Player player){
-        return operate.apply(dealer, player);
+    public double calculateRevenue(Player player) {
+        return player.multiplyBettingMoney(ratio);
     }
 
     public static Result compete(Dealer dealer, Player player) {
+        if (dealer.isBlackJack() && player.isBlackJack()) {
+            return DRAW;
+        }
         if (player.isBlackJack()) {
             return BLACKJACK;
         }
+        if (dealer.isBlackJack()) {
+            return LOSE;
+        }
         if (dealer.isBust() && player.isBust()) {
-            return DRAW;
+            return LOSE;
         }
         if (dealer.isBust()) {
             return WIN;
@@ -58,24 +53,4 @@ public enum Result {
     private boolean isSameResult(int compareValue) {
         return this.resultValue == compareValue;
     }
-
-    public static Result oppositeResult(Result result) {
-        if (isWin(result)) {
-            return LOSE;
-        }
-        if (isLose(result)) {
-            return WIN;
-        }
-        return DRAW;
-    }
-
-    private static boolean isLose(final Result result) {
-        return result == LOSE;
-    }
-
-    private static boolean isWin(final Result result) {
-        return result == WIN;
-    }
-
-
 }

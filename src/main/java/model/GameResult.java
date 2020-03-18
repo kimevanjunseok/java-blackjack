@@ -5,31 +5,30 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GameResult {
-
-    private Players players;
-    private Dealer dealer;
-    private Map<Player, Revenue> playerResult = new LinkedHashMap<>();
+    private final Players players;
+    private final Dealer dealer;
+    private final Map<Player, Revenue> playersResult = new LinkedHashMap<>();
 
     public GameResult(final Players players, final Dealer dealer) {
         this.players = players;
         this.dealer = dealer;
-        calculateResults();
+        makePlayersResult();
     }
 
-    private void calculateResults() {
+    private void makePlayersResult() {
         for (Player player : players) {
             Result result = Result.compete(dealer, player);
-            playerResult.put(player, new Revenue(result.calculateRevenue(dealer, player)));
+            playersResult.put(player, new Revenue(result.calculateRevenue(player)));
         }
     }
 
-    public Map<Player, Revenue> getPlayerResult() {
-        return Collections.unmodifiableMap(playerResult);
+    public Map<Player, Revenue> getPlayersResult() {
+        return Collections.unmodifiableMap(playersResult);
     }
 
     public Revenue getDealerResult() {
-        return new Revenue(playerResult.values().stream()
+        return new Revenue(playersResult.values().stream()
                 .mapToDouble(Revenue::getRevenue)
-                .sum() * -1);
+                .sum() * -1.0);
     }
 }
