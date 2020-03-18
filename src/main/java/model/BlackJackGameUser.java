@@ -20,11 +20,6 @@ public abstract class BlackJackGameUser implements Comparable<BlackJackGameUser>
         }
     }
 
-//    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
-//        return Integer.compare(dealer.getScore(), player.getScore());
-//    }
-
-
     @Override
     public int compareTo(BlackJackGameUser o) {
         Integer score = getScore();
