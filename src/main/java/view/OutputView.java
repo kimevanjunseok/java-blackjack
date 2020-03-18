@@ -5,8 +5,8 @@ import model.*;
 import java.util.Map;
 
 import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
-import static controller.BlackJackGame.HIT_BOUNDARY;
 import static model.Dealer.DEALER_NAME;
+import static model.Dealer.HIT_BOUNDARY;
 
 public class OutputView {
     public static final String DELIMITER = ": ";
@@ -32,7 +32,7 @@ public class OutputView {
     }
 
     private static void printDealerCard(Dealer dealer) {
-        System.out.print(NEW_LINE + dealer.getName() + DELIMITER + dealer.toStringCardHandFirst());
+        System.out.print(NEW_LINE + dealer.getName() + DELIMITER + dealer.toStringCardHand());
     }
 
     private static void printPlayersCard(Players players) {

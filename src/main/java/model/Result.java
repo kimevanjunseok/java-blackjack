@@ -43,7 +43,7 @@ public enum Result {
         if (player.isBust()) {
             return LOSE;
         }
-        int compareValue = BlackJackGameUser.compare(dealer, player);
+        int compareValue = dealer.compareTo(player);
         return Arrays.stream(Result.values())
                 .filter(result -> result.isSameResult(compareValue))
                 .findFirst()

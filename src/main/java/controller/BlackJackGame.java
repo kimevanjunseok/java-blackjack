@@ -15,7 +15,6 @@ public class BlackJackGame {
     public static final double LOSE_RATIO = -1.0;
     public static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final int INITIAL_DRAW_COUNT = 2;
-    public static final int HIT_BOUNDARY = 16;
     public static final int BLACK_JACK_COUNT = 21;
     public static final String COMMA = ",";
 

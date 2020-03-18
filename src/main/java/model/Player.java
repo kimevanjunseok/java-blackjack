@@ -19,4 +19,9 @@ public class Player extends BlackJackGameUser {
     public double multiplyBettingMoney(double factor) {
         return bettingMoney.multiplyBettingMoney(factor);
     }
+
+    @Override
+    public String toStringCardHand() {
+        return cardHand.toString();
+    }
 }

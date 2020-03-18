@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 
-public abstract class BlackJackGameUser {
+public abstract class BlackJackGameUser implements Comparable<BlackJackGameUser>{
     protected final String name;
     protected final CardHand cardHand;
 
@@ -20,8 +20,15 @@ public abstract class BlackJackGameUser {
         }
     }
 
-    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
-        return Integer.compare(dealer.getScore(), player.getScore());
+//    public static int compare(final BlackJackGameUser dealer, final BlackJackGameUser player) {
+//        return Integer.compare(dealer.getScore(), player.getScore());
+//    }
+
+
+    @Override
+    public int compareTo(BlackJackGameUser o) {
+        Integer score = getScore();
+        return score.compareTo(o.getScore());
     }
 
     public void drawCard(Deck deck, int drawCount) {
@@ -42,9 +49,7 @@ public abstract class BlackJackGameUser {
         return cardHand.isMoreThanBlackJack();
     }
 
-    public String toStringCardHand() {
-        return cardHand.toString();
-    }
+    abstract public String toStringCardHand();
 
     public int getScore() {
         return cardHand.calculateScore();

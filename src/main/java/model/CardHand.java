@@ -68,7 +68,6 @@ public class CardHand implements Iterable<Card> {
         List<String> cardNames = cards.stream()
                 .map(Card::toString)
                 .collect(Collectors.toList());
-
         return String.join(COMMA, cardNames);
     }
 }
