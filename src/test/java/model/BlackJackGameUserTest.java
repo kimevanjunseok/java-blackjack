@@ -18,8 +18,7 @@ public class BlackJackGameUserTest {
     ));
     private Player notBustPlayer = new Player(PLAYER_NAME, Arrays.asList(
             new Card(Symbol.KING, Type.DIAMOND),
-            new Card(Symbol.QUEEN, Type.DIAMOND),
-            new Card(Symbol.ACE, Type.DIAMOND)
+            new Card(Symbol.QUEEN, Type.DIAMOND)
     ));
     private Player blackJackPlayer = new Player(PLAYER_NAME, Arrays.asList(
             new Card(Symbol.QUEEN, Type.CLUB),
