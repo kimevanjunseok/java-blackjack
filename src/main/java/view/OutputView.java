@@ -9,21 +9,11 @@ import static model.Dealer.DEALER_NAME;
 import static model.Dealer.HIT_BOUNDARY;
 
 public class OutputView {
-    public static final String DELIMITER = ": ";
     public static final String NEW_LINE = "\n";
-    public static final String RESULT_STRING = " - 결과: ";
 
     public static void printInitialCards(Players players, Dealer dealer) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("\n")
-                .append(dealer.getName())
-                .append("와 ")
-                .append(players.getNames())
-                .append("에게 ")
-                .append(INITIAL_DRAW_COUNT)
-                .append("장의 카드를 나누었습니다.");
-        System.out.println(stringBuilder.toString());
+        System.out.printf(NEW_LINE + "%s와 %s에세 %d장의 카드를 나누었습니다." + NEW_LINE,
+            dealer.getName(), players.getNames(), INITIAL_DRAW_COUNT);
     }
 
     public static void printUsersCard(Players players, Dealer dealer) {
@@ -32,7 +22,7 @@ public class OutputView {
     }
 
     private static void printDealerCard(Dealer dealer) {
-        System.out.print(NEW_LINE + dealer.getName() + DELIMITER + dealer.toStringCardHandFirst());
+        System.out.printf("%s: %s" + NEW_LINE, dealer.getName(), dealer.toStringCardHandFirst());
     }
 
     private static void printPlayersCard(Players players) {
@@ -42,49 +32,44 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printPlayerCard(BlackJackGameUser blackJackGameUser) {
-        System.out.print(NEW_LINE + blackJackGameUser.getName() + DELIMITER + blackJackGameUser.toStringCardHand());
+    public static void printPlayerCard(Player player) {
+        System.out.printf("%s카드: %s" + NEW_LINE, player.getName(), player.toStringCardHand());
     }
 
     public static void printDealerDraw(Dealer dealer) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(NEW_LINE)
-                .append(dealer.getName())
-                .append("는 ")
-                .append(HIT_BOUNDARY)
-                .append("이하라 한장의 카드를 더 받았습니다.");
-        System.out.println(stringBuilder.toString());
+        System.out.printf(NEW_LINE+ "%s는 %d이하라 한장의 카드를 더 받았습니다." + NEW_LINE,
+            dealer.getName(), HIT_BOUNDARY);
     }
 
-    public static void printFinalCardHandResult(final Players players, final Dealer dealer) {
+    public static void printFinalCardHandResult(Players players, Dealer dealer) {
         System.out.println();
-        printPlayerCard(dealer);
-        System.out.print(RESULT_STRING + dealer.getScore());
+        printResultUserCard(dealer);
         for (Player player : players) {
-            printPlayerCard(player);
-            System.out.print(RESULT_STRING + player.getScore());
+            printResultUserCard(player);
         }
     }
 
-    public static void printResult(final GameResult gameResult) {
-        System.out.println(NEW_LINE + NEW_LINE + "## 최종 수익");
-        printDealerResult(gameResult.getDealerResult());
-        printPlayersResult(gameResult.getPlayersResult());
+    private static void printResultUserCard(BlackJackGameUser blackJackGameUser) {
+        System.out.printf("%s카드: %s - 결과: %d" + NEW_LINE,
+            blackJackGameUser.getName(),
+            blackJackGameUser.toStringCardHand(),
+            blackJackGameUser.getScore());
     }
 
-    public static void printDealerResult(final Revenue result) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(DEALER_NAME)
-                .append(DELIMITER)
-                .append((int)result.getRevenue());
-        System.out.println(stringBuilder.toString());
+    public static void printRevenue(final GameResult gameResult) {
+        System.out.println(NEW_LINE + "## 최종 수익");
+        printDealerRevenue(gameResult.getDealerResult());
+        printPlayersRevenue(gameResult.getPlayersResult());
     }
 
-    private static void printPlayersResult(final Map<Player, Revenue> result) {
+    private static void printDealerRevenue(Revenue result) {
+        System.out.printf("%s: %d" + NEW_LINE, DEALER_NAME, (int)result.getRevenue());
+    }
+
+    private static void printPlayersRevenue(Map<Player, Revenue> result) {
         for (Player player : result.keySet()) {
-            System.out.print(player.getName() + DELIMITER);
-            System.out.println((int)result.get(player).getRevenue());
+            System.out.printf("%s: %d" + NEW_LINE,
+                player.getName(), (int)result.get(player).getRevenue());
         }
     }
 }

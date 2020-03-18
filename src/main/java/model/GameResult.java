@@ -13,7 +13,7 @@ public class GameResult {
 
     private void makePlayersResult(Players players, Dealer dealer) {
         for (Player player : players) {
-            Result result = Result.compete(dealer, player);
+            Result result = Result.getResult(dealer, player);
             playersResult.put(player, new Revenue(result.calculateRevenue(player)));
         }
     }

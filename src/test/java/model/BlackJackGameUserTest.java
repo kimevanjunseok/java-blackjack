@@ -68,8 +68,8 @@ public class BlackJackGameUserTest {
     @Test
     @DisplayName("moreThanBlackjack 테스트")
     void isMoreThanBlackJackTest() {
-        assertThat(notBustPlayer.isMoreThanBlackJack()).isFalse();
-        assertThat(blackJackPlayer.isMoreThanBlackJack()).isTrue();
-        assertThat(bustPlayer.isMoreThanBlackJack()).isTrue();
+        assertThat(notBustPlayer.isOverBlackJack()).isFalse();
+        assertThat(blackJackPlayer.isOverBlackJack()).isTrue();
+        assertThat(bustPlayer.isOverBlackJack()).isTrue();
     }
 }

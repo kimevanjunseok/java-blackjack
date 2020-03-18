@@ -1,32 +1,25 @@
 package model;
 
 import exception.IllegalYesOrNoInputException;
+import java.util.Arrays;
 import utils.StringUtils;
 
-import java.util.Arrays;
-
 public enum Answer {
-    YES("y", true),
-    NO("n", false);
+    YES("y"),
+    No("n");
 
     private String answer;
-    private boolean isYes;
 
-    Answer(String answer, boolean isYes) {
+    Answer(String answer) {
         this.answer = answer;
-        this.isYes = isYes;
     }
 
-    public static Answer getYesOrNoByValue(String input) {
-        validate(input);
+    public static Answer find(String inputAnswer) {
+        validate(inputAnswer);
         return Arrays.stream(Answer.values())
-                .filter(answer -> answer.isSameYesOrNo(input))
-                .findAny()
-                .orElseThrow(() -> new IllegalYesOrNoInputException(String.format("%s는 올바르지 않은 값입니다.", input)));
-    }
-
-    private boolean isSameYesOrNo(final String input) {
-        return answer.equalsIgnoreCase(input);
+            .filter(answer -> inputAnswer.equalsIgnoreCase(answer.answer))
+            .findAny()
+            .orElseThrow(() -> new IllegalYesOrNoInputException("y 또는 n를 입력해 주세요."));
     }
 
     private static void validate(String input) {
@@ -35,7 +28,6 @@ public enum Answer {
     }
 
     public boolean isYes() {
-        return isYes;
+        return answer.equals(Answer.YES.answer);
     }
 }
-

@@ -34,7 +34,7 @@ public class BlackJackGameUser implements Comparable<BlackJackGameUser>{
         return cardHand.isBlackJack();
     }
 
-    public boolean isMoreThanBlackJack() {
+    public boolean isOverBlackJack() {
         return cardHand.isMoreThanBlackJack();
     }
 

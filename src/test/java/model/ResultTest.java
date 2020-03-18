@@ -41,32 +41,31 @@ public class ResultTest {
     @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 LOSE")
     @Test
     void bothBustTest() {
-        assertThat(Result.compete(bustDealer, bustPlayer)).isEqualTo(Result.LOSE);
+        assertThat(Result.getResult(bustDealer, bustPlayer)).isEqualTo(Result.LOSE);
     }
 
     @Test
     @DisplayName("딜러만 21을 넘긴 경우 플레이어 WIN")
     void dealerBustTest() {
-        assertThat(Result.compete(bustDealer, notBustPlayer)).isEqualTo(Result.WIN);
+        assertThat(Result.getResult(bustDealer, notBustPlayer)).isEqualTo(Result.WIN);
     }
 
     @Test
     @DisplayName("딜러와 플레이어 모두 21인 경우 DRAW")
     void bothBlackJackTest() {
-        assertThat(Result.compete(blackJackDealer, blackJackPlayer)).isEqualTo(Result.DRAW);
+        assertThat(Result.getResult(blackJackDealer, blackJackPlayer)).isEqualTo(Result.DRAW);
     }
 
     @Test
     @DisplayName("딜러만 블랙잭인 경우 플레이어 Lose")
     void dealerBlackJackTest() {
-        assertThat(Result.compete(blackJackDealer, notBustPlayer)).isEqualTo(Result.LOSE);
+        assertThat(Result.getResult(blackJackDealer, notBustPlayer)).isEqualTo(Result.LOSE);
     }
 
     @Test
     @DisplayName("블랙잭 우승 시 수익 계산")
     void playerBlackJackRevenueTest(){
-        Result result = Result.compete(notBustDealer, blackJackPlayer);
+        Result result = Result.getResult(notBustDealer, blackJackPlayer);
         assertThat(result.calculateRevenue(blackJackPlayer)).isEqualTo(150);
     }
-
 }

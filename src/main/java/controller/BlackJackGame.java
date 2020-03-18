@@ -9,12 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BlackJackGame {
-    public static final double BLACK_JACK_RATIO = 1.5;
-    public static final double WIN_RATIO = 1.0;
-    public static final double DRAW_RATIO = 0.0;
-    public static final double LOSE_RATIO = -1.0;
     public static final int LOWER_MONEY_BOUND = 100;
-    public static final int ADDITIONAL_DRAW_COUNT = 1;
+    private static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final int INITIAL_DRAW_COUNT = 2;
     public static final int BLACK_JACK_COUNT = 21;
     public static final String COMMA = ",";
@@ -33,7 +29,7 @@ public class BlackJackGame {
         OutputView.printFinalCardHandResult(players, dealer);
 
         GameResult gameResult = new GameResult(players, dealer);
-        OutputView.printResult(gameResult);
+        OutputView.printRevenue(gameResult);
     }
 
     private static Map<String, BettingMoney> makePlayersData(PlayerNames playerNames) {
@@ -51,11 +47,7 @@ public class BlackJackGame {
     }
 
     private static void drawCardEachPlayer(Deck deck, Player player) {
-        while (!player.isMoreThanBlackJack()) {
-            Answer answer = Answer.getYesOrNoByValue(InputView.inputYesOrNo(player));
-            if (!answer.isYes()) {
-                break;
-            }
+        while (!player.isOverBlackJack() && Answer.find(InputView.inputYesOrNo(player)).isYes()) {
             player.drawCard(deck, ADDITIONAL_DRAW_COUNT);
             OutputView.printPlayerCard(player);
         }
