@@ -1,14 +1,10 @@
 package model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static controller.BlackJackGame.ADDITIONAL_DRAW_COUNT;
-import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
-import static model.BlackJackGameUserTest.PLAYER_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultTest {
@@ -42,28 +38,28 @@ public class ResultTest {
             new Card(Symbol.ACE, Type.HEART)
     ));
 
-    @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 DRAW")
+    @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 LOSE")
     @Test
     void bothBustTest() {
-        assertThat(Result.compete(bustDealer, bustPlayer) == Result.DRAW).isTrue();
+        assertThat(Result.compete(bustDealer, bustPlayer)).isEqualTo(Result.LOSE);
     }
 
     @Test
     @DisplayName("딜러만 21을 넘긴 경우 플레이어 WIN")
     void dealerBustTest() {
-        assertThat(Result.compete(bustDealer, notBustPlayer) == Result.WIN).isTrue();
+        assertThat(Result.compete(bustDealer, notBustPlayer)).isEqualTo(Result.WIN);
     }
 
     @Test
     @DisplayName("딜러와 플레이어 모두 21인 경우 DRAW")
     void bothBlackJackTest() {
-        assertThat(Result.compete(blackJackDealer, blackJackPlayer) == Result.DRAW).isTrue();
+        assertThat(Result.compete(blackJackDealer, blackJackPlayer)).isEqualTo(Result.DRAW);
     }
 
     @Test
     @DisplayName("딜러만 블랙잭인 경우 플레이어 Lose")
     void dealerBlackJackTest() {
-        assertThat(Result.compete(blackJackDealer, notBustPlayer) == Result.LOSE).isTrue();
+        assertThat(Result.compete(blackJackDealer, notBustPlayer)).isEqualTo(Result.LOSE);
     }
 
     @Test

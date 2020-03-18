@@ -10,26 +10,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BlackJackGameUserTest {
     public static final String PLAYER_NAME = "DD";
-    Player bustPlayer = new Player(PLAYER_NAME, Arrays.asList(
+
+    private Player bustPlayer = new Player(PLAYER_NAME, Arrays.asList(
             new Card(Symbol.KING, Type.DIAMOND),
             new Card(Symbol.QUEEN, Type.DIAMOND),
             new Card(Symbol.TWO, Type.DIAMOND)
     ));
-    Player notBustPlayer = new Player(PLAYER_NAME, Arrays.asList(
+    private Player notBustPlayer = new Player(PLAYER_NAME, Arrays.asList(
             new Card(Symbol.KING, Type.DIAMOND),
             new Card(Symbol.QUEEN, Type.DIAMOND),
             new Card(Symbol.ACE, Type.DIAMOND)
     ));
-    Player blackJackPlayer = new Player(PLAYER_NAME, Arrays.asList(
+    private Player blackJackPlayer = new Player(PLAYER_NAME, Arrays.asList(
             new Card(Symbol.QUEEN, Type.CLUB),
             new Card(Symbol.ACE, Type.HEART)
     ));
-    Dealer bustDealer = new Dealer(Arrays.asList(
+    private Dealer bustDealer = new Dealer(Arrays.asList(
             new Card(Symbol.KING, Type.DIAMOND),
             new Card(Symbol.QUEEN, Type.DIAMOND),
             new Card(Symbol.TWO, Type.DIAMOND)
     ));
-    Dealer notBustDealer = new Dealer(Arrays.asList(
+    private Dealer notBustDealer = new Dealer(Arrays.asList(
             new Card(Symbol.KING, Type.DIAMOND),
             new Card(Symbol.QUEEN, Type.DIAMOND),
             new Card(Symbol.ACE, Type.DIAMOND)
@@ -62,5 +63,14 @@ public class BlackJackGameUserTest {
     void isBlackJackTest() {
         assertThat(notBustPlayer.isBlackJack()).isFalse();
         assertThat(blackJackPlayer.isBlackJack()).isTrue();
+        assertThat(bustPlayer.isBlackJack()).isFalse();
+    }
+
+    @Test
+    @DisplayName("moreThanBlackjack 테스트")
+    void isMoreThanBlackJackTest() {
+        assertThat(notBustPlayer.isMoreThanBlackJack()).isFalse();
+        assertThat(blackJackPlayer.isMoreThanBlackJack()).isTrue();
+        assertThat(bustPlayer.isMoreThanBlackJack()).isTrue();
     }
 }

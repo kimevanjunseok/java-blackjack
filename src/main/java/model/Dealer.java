@@ -11,11 +11,11 @@ public class Dealer extends BlackJackGameUser {
         super(DEALER_NAME, deck, initialDrawCount);
     }
 
-    public Dealer(List<Card> cards){
+    public Dealer(List<Card> cards) {
         super(DEALER_NAME, cards);
     }
 
-    public String toStringCardHand() {
+    public String toStringCardHandFirst() {
         return cardHand.getCards().get(FIRST).toString();
     }
 

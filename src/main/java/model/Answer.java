@@ -9,12 +9,12 @@ public enum Answer {
     YES("y", true),
     NO("n", false);
 
-    private String yesOrNo;
-    private boolean trueOrFalse;
+    private String answer;
+    private boolean isYes;
 
-    Answer(String yesOrNo, boolean trueOrFalse) {
-        this.yesOrNo = yesOrNo;
-        this.trueOrFalse = trueOrFalse;
+    Answer(String answer, boolean isYes) {
+        this.answer = answer;
+        this.isYes = isYes;
     }
 
     public static Answer getYesOrNoByValue(String input) {
@@ -26,7 +26,7 @@ public enum Answer {
     }
 
     private boolean isSameYesOrNo(final String input) {
-        return yesOrNo.equalsIgnoreCase(input);
+        return answer.equalsIgnoreCase(input);
     }
 
     private static void validate(String input) {
@@ -34,8 +34,8 @@ public enum Answer {
         StringUtils.validateEmpty(input);
     }
 
-    public boolean getTrueOrFalse() {
-        return trueOrFalse;
+    public boolean isYes() {
+        return isYes;
     }
 }
 

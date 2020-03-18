@@ -32,7 +32,7 @@ public class OutputView {
     }
 
     private static void printDealerCard(Dealer dealer) {
-        System.out.print(NEW_LINE + dealer.getName() + DELIMITER + dealer.toStringCardHand());
+        System.out.print(NEW_LINE + dealer.getName() + DELIMITER + dealer.toStringCardHandFirst());
     }
 
     private static void printPlayersCard(Players players) {

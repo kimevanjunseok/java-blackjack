@@ -5,17 +5,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GameResult {
-    private final Players players;
-    private final Dealer dealer;
     private final Map<Player, Revenue> playersResult = new LinkedHashMap<>();
 
     public GameResult(final Players players, final Dealer dealer) {
-        this.players = players;
-        this.dealer = dealer;
-        makePlayersResult();
+        makePlayersResult(players, dealer);
     }
 
-    private void makePlayersResult() {
+    private void makePlayersResult(Players players, Dealer dealer) {
         for (Player player : players) {
             Result result = Result.compete(dealer, player);
             playersResult.put(player, new Revenue(result.calculateRevenue(player)));

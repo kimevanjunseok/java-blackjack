@@ -11,11 +11,11 @@ public class PlayersData {
         this.playersData.putAll(playersData);
     }
 
-    public BettingMoney getBettingMoney(String name){
+    public BettingMoney getBettingMoney(String name) {
         return playersData.get(name);
     }
 
-    public Set<String> getNames(){
+    public Set<String> getNames() {
         return playersData.keySet();
     }
 }

@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Card {
+public final class Card {
     private final Symbol symbol;
     private final Type type;
 
@@ -20,8 +20,7 @@ public class Card {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return symbol == card.symbol &&
-                type == card.type;
+        return (symbol == card.symbol) && (type == card.type);
     }
 
     @Override
