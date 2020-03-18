@@ -19,7 +19,6 @@ PlayerNames 클래스
 - 입력 검증 구현
   - split / Empty / Null
 
-
 User 클래스
 - draw
 - 보유한 카드
@@ -36,7 +35,6 @@ User 클래스
 
 Players 
 - Player 일급 컬렉션
-
 
 Card
 
