@@ -6,8 +6,8 @@ import java.util.List;
 public class Player extends BlackJackGameUser {
     private final BettingMoney bettingMoney;
 
-    public Player(String name, BettingMoney bettingMoney, Deck deck, int initialDrawCount) {
-        super(name, deck, initialDrawCount);
+    public Player(String name, BettingMoney bettingMoney) {
+        super(name);
         this.bettingMoney = bettingMoney;
     }
 

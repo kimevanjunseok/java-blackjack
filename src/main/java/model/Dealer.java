@@ -7,8 +7,8 @@ public class Dealer extends BlackJackGameUser {
     public static final String DEALER_NAME = "딜러";
     public static final int HIT_BOUNDARY = 16;
 
-    public Dealer(Deck deck, int initialDrawCount) {
-        super(DEALER_NAME, deck, initialDrawCount);
+    public Dealer() {
+        super(DEALER_NAME);
     }
 
     public Dealer(List<Card> cards) {

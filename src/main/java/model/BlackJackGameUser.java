@@ -5,16 +5,14 @@ import java.util.List;
 
 public class BlackJackGameUser implements Comparable<BlackJackGameUser>{
     protected final String name;
-    protected final CardHand cardHand;
+    protected final CardHand cardHand = new CardHand();
 
-    public BlackJackGameUser(String name, Deck deck, int initialDrawCount) {
+    public BlackJackGameUser(String name) {
         this.name = name;
-        this.cardHand = deck.draw(initialDrawCount);
     }
 
     public BlackJackGameUser(String name, List<Card> cards) {
         this.name = name;
-        this.cardHand = new CardHand();
         for (Card card : cards) {
             cardHand.addCard(card);
         }

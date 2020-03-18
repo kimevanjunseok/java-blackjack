@@ -17,8 +17,9 @@ public class BlackJackGame {
         Deck deck = new Deck(CardFactory.createCardList());
         PlayerNames playerNames = new PlayerNames(InputView.inputPlayerNames());
         PlayersData playersData = new PlayersData(makePlayersData(playerNames));
-        Players players = new Players(playersData, deck, INITIAL_DRAW_COUNT);
-        Dealer dealer = new Dealer(deck, INITIAL_DRAW_COUNT);
+        Players players = new Players(playersData);
+        Dealer dealer = new Dealer();
+        initialDrawCard(players, dealer, deck);
         OutputView.printInitialCards(players, dealer);
         OutputView.printUsersCard(players, dealer);
 
@@ -36,6 +37,13 @@ public class BlackJackGame {
             playerData.put(name, new BettingMoney(InputView.inputBettingMoney(name)));
         }
         return Collections.unmodifiableMap(playerData);
+    }
+
+    private static void initialDrawCard(Players players, Dealer dealer, Deck deck) {
+        dealer.drawCard(deck, INITIAL_DRAW_COUNT);
+        for (Player player : players) {
+            player.drawCard(deck, INITIAL_DRAW_COUNT);
+        }
     }
 
     private static void drawCardToPlayers(final Players players, final Deck deck) {

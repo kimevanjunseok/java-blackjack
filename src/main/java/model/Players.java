@@ -7,9 +7,9 @@ import static controller.BlackJackGame.COMMA;
 public class Players implements Iterable<Player> {
     private final List<Player> players = new ArrayList<>();
 
-    public Players(PlayersData data, Deck deck, int initialDrawCount) {
+    public Players(PlayersData data) {
         for (String name : data.getNames()) {
-            players.add(new Player(name, data.getBettingMoney(name), deck, initialDrawCount));
+            players.add(new Player(name, data.getBettingMoney(name)));
         }
     }
 
