@@ -1,11 +1,14 @@
-package model;
+package model.user;
 
+import model.card.Card;
+import model.card.Symbol;
+import model.card.Type;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static model.Dealer.DEALER_NAME;
+import static model.user.Dealer.DEALER_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BlackJackGameUserTest {

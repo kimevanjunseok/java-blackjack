@@ -1,10 +1,11 @@
-package model;
+package model.card;
 
 import exception.EmptyDeckException;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
+import model.user.card.CardHand;
 
 public class Deck {
     private Stack<Card> cards = new Stack<>();

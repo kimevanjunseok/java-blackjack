@@ -1,6 +1,7 @@
-package model;
+package model.user;
 
 import java.util.*;
+import model.user.data.PlayersData;
 
 import static controller.BlackJackGame.COMMA;
 

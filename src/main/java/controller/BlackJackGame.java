@@ -1,6 +1,15 @@
 package controller;
 
 import model.*;
+import model.card.CardFactory;
+import model.card.Deck;
+import model.result.GameResult;
+import model.user.Dealer;
+import model.user.Player;
+import model.user.Players;
+import model.user.data.PlayerNames;
+import model.user.data.PlayersData;
+import model.user.money.BettingMoney;
 import view.InputView;
 import view.OutputView;
 

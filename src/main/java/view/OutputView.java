@@ -1,12 +1,16 @@
 package view;
 
-import model.*;
-
 import java.util.Map;
+import model.result.GameResult;
+import model.user.BlackJackGameUser;
+import model.user.Dealer;
+import model.user.Player;
+import model.user.Players;
+import model.user.money.Revenue;
 
 import static controller.BlackJackGame.INITIAL_DRAW_COUNT;
-import static model.Dealer.DEALER_NAME;
-import static model.Dealer.HIT_BOUNDARY;
+import static model.user.Dealer.DEALER_NAME;
+import static model.user.Dealer.HIT_BOUNDARY;
 
 public class OutputView {
     public static final String NEW_LINE = "\n";

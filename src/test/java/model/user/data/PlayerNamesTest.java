@@ -1,4 +1,4 @@
-package model;
+package model.user.data;
 
 import exception.IllegalStringInputException;
 import exception.PlayerNamesOverlapException;

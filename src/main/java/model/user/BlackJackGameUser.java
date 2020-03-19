@@ -1,7 +1,9 @@
-package model;
+package model.user;
 
 import java.util.List;
-
+import model.user.card.CardHand;
+import model.card.Card;
+import model.card.Deck;
 
 public class BlackJackGameUser{
     protected final String name;

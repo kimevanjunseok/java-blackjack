@@ -1,5 +1,11 @@
-package model;
+package model.result;
 
+import model.card.Card;
+import model.card.Symbol;
+import model.card.Type;
+import model.result.Result;
+import model.user.Dealer;
+import model.user.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,7 @@
-package model;
+package model.user;
 
 import java.util.List;
+import model.card.Card;
 
 public class Dealer extends BlackJackGameUser {
     private static final int FIRST = 0;

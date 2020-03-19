@@ -1,10 +1,11 @@
-package model;
+package model.user.card;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import model.card.Card;
 
 import static controller.BlackJackGame.*;
 

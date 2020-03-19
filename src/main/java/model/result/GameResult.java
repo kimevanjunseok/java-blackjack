@@ -1,8 +1,12 @@
-package model;
+package model.result;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import model.user.Dealer;
+import model.user.Player;
+import model.user.Players;
+import model.user.money.Revenue;
 
 public class GameResult {
     private final Map<Player, Revenue> playersResult = new LinkedHashMap<>();

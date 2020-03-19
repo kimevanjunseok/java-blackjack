@@ -1,4 +1,4 @@
-package model;
+package model.user.money;
 
 import exception.IllegalBettingMoneyFormatException;
 import org.junit.jupiter.api.DisplayName;

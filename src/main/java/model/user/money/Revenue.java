@@ -1,4 +1,4 @@
-package model;
+package model.user.money;
 
 public class Revenue {
     private final double revenue;

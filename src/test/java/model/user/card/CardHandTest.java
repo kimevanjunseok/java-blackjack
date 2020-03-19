@@ -1,5 +1,8 @@
-package model;
+package model.user.card;
 
+import model.card.Card;
+import model.card.Symbol;
+import model.card.Type;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

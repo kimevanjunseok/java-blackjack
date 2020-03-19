@@ -1,7 +1,8 @@
-package model;
-
+package model.user;
 
 import java.util.List;
+import model.user.money.BettingMoney;
+import model.card.Card;
 
 public class Player extends BlackJackGameUser {
     private final BettingMoney bettingMoney;

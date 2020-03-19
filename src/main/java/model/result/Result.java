@@ -1,8 +1,10 @@
-package model;
+package model.result;
 
 import exception.IllegalResultException;
 
 import java.util.Arrays;
+import model.user.Dealer;
+import model.user.Player;
 
 public enum Result {
     BLACKJACK(1.5),
