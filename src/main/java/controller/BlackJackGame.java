@@ -9,26 +9,28 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BlackJackGame {
-    private static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final int INITIAL_DRAW_COUNT = 2;
+    private static final int ADDITIONAL_DRAW_COUNT = 1;
     public static final String COMMA = ",";
 
     public static void play() {
         Deck deck = new Deck(CardFactory.createCardList());
-        PlayerNames playerNames = new PlayerNames(InputView.inputPlayerNames());
-        PlayersData playersData = new PlayersData(makePlayersData(playerNames));
-        Players players = new Players(playersData);
+        Players players = new Players(initialCreateUsersData());
         Dealer dealer = new Dealer();
-        initialDrawCard(players, dealer, deck);
-        OutputView.printInitialCards(players, dealer);
-        OutputView.printUsersCard(players, dealer);
 
-        drawCardToPlayers(players, deck);
-        hitOrStayForDealer(dealer, deck);
+        drawInitialCard(deck, players, dealer);
+
+        drawAdditionalCard(deck, players, dealer);
+
         OutputView.printFinalCardHandResult(players, dealer);
 
         GameResult gameResult = new GameResult(players, dealer);
         OutputView.printRevenue(gameResult);
+    }
+
+    private static PlayersData initialCreateUsersData() {
+        PlayerNames playerNames = new PlayerNames(InputView.inputPlayerNames());
+        return new PlayersData(makePlayersData(playerNames));
     }
 
     private static Map<String, BettingMoney> makePlayersData(PlayerNames playerNames) {
@@ -39,7 +41,18 @@ public class BlackJackGame {
         return Collections.unmodifiableMap(playerData);
     }
 
-    private static void initialDrawCard(Players players, Dealer dealer, Deck deck) {
+    private static void drawInitialCard(Deck deck, Players players, Dealer dealer) {
+        initialDrawCardUsers(players, dealer, deck);
+        OutputView.printInitialCards(players, dealer);
+        OutputView.printUsersCard(players, dealer);
+    }
+
+    private static void drawAdditionalCard(Deck deck, Players players, Dealer dealer) {
+        drawCardToPlayers(players, deck);
+        hitOrStayForDealer(dealer, deck);
+    }
+
+    private static void initialDrawCardUsers(Players players, Dealer dealer, Deck deck) {
         dealer.drawCard(deck, INITIAL_DRAW_COUNT);
         for (Player player : players) {
             player.drawCard(deck, INITIAL_DRAW_COUNT);

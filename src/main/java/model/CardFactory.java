@@ -8,10 +8,9 @@ import java.util.stream.Stream;
 public class CardFactory {
 
     public static List<Card> createCardList() {
-        List<Card> cards;
-        cards = Arrays.stream(Type.values())
-                .flatMap(CardFactory::mapToCardBySymbol)
-                .collect(Collectors.toList());
+        List<Card> cards = Arrays.stream(Type.values())
+            .flatMap(CardFactory::mapToCardBySymbol)
+            .collect(Collectors.toList());
         return Collections.unmodifiableList(cards);
     }
 
