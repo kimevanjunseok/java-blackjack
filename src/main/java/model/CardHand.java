@@ -25,7 +25,7 @@ public class CardHand implements Iterable<Card> {
         return calculateScoreWithNoAce();
     }
 
-    public int calculateScoreWithAce() {
+    private int calculateScoreWithAce() {
         int score = calculateScoreWithNoAce();
         if (score + ADDITIONAL_ACE_SCORE > BLACK_JACK_COUNT) {
             return score;
@@ -33,7 +33,7 @@ public class CardHand implements Iterable<Card> {
         return score + ADDITIONAL_ACE_SCORE;
     }
 
-    public int calculateScoreWithNoAce() {
+    private int calculateScoreWithNoAce() {
         return cards.stream()
                 .mapToInt(Card::calculateScore)
                 .sum();

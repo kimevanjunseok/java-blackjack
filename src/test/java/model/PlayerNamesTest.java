@@ -38,6 +38,7 @@ public class PlayerNamesTest {
     }
 
     @ParameterizedTest
+    @DisplayName("이름을 잘 포함하고 있는지 확인")
     @CsvSource(value = {"pobi,crong,honux:pobi", "crong:crong", "DD,Tiger:Tiger"}, delimiter = ':')
     void namesList_test(String input, String expected) {
         PlayerNames names = new PlayerNames(input);
@@ -45,6 +46,7 @@ public class PlayerNamesTest {
     }
 
     @ParameterizedTest
+    @DisplayName("중복 체크")
     @ValueSource(strings = {"pobi,pobi", "crong,crong"})
     void overlap_test(String input) {
         assertThatThrownBy(() -> new PlayerNames(input)

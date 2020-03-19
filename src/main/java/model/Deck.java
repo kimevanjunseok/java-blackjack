@@ -28,14 +28,13 @@ public class Deck {
         return cardHand;
     }
 
-    public int getCurrentDeckSize() {
-        return cards.size();
-    }
-
     private void validateSize(int count) {
         if (getCurrentDeckSize() - count < 0) {
             throw new EmptyDeckException(count + "장 이상 draw 할 카드가 존재하지 않습니다.");
         }
     }
 
+    public int getCurrentDeckSize() {
+        return cards.size();
+    }
 }

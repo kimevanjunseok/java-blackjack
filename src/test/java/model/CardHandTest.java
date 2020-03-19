@@ -22,7 +22,7 @@ public class CardHandTest {
         cardHand.addCard(new Card(Symbol.THREE, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.TWO, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.SIX, Type.DIAMOND));
-        assertThat(cardHand.calculateScoreWithNoAce()).isEqualTo(11);
+        assertThat(cardHand.calculateScore()).isEqualTo(11);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class CardHandTest {
         cardHand.addCard(new Card(Symbol.THREE, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.ACE, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.SIX, Type.DIAMOND));
-        assertThat(cardHand.calculateScoreWithAce()).isEqualTo(20);
+        assertThat(cardHand.calculateScore()).isEqualTo(20);
     }
 
     @Test
@@ -42,6 +42,6 @@ public class CardHandTest {
         cardHand.addCard(new Card(Symbol.FIVE, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.ACE, Type.DIAMOND));
         cardHand.addCard(new Card(Symbol.SIX, Type.DIAMOND));
-        assertThat(cardHand.calculateScoreWithAce()).isEqualTo(12);
+        assertThat(cardHand.calculateScore()).isEqualTo(12);
     }
 }

@@ -38,8 +38,8 @@ public class ResultTest {
             new Card(Symbol.ACE, Type.HEART)
     ));
 
-    @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 LOSE")
     @Test
+    @DisplayName("딜러와 플레이어 모두 21을 넘긴 경우 LOSE")
     void bothBustTest() {
         assertThat(Result.getResult(bustDealer, bustPlayer)).isEqualTo(Result.LOSE);
     }
