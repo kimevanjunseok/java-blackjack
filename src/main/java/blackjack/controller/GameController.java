@@ -1,5 +1,9 @@
 package blackjack.controller;
 
+import blackjack.domain.user.Dealer;
+import blackjack.domain.user.Player;
+import blackjack.domain.user.PlayerFactory;
+import blackjack.domain.user.Players;
 import blackjack.view.InputView;
 
 public class GameController {
@@ -15,6 +19,7 @@ public class GameController {
     }
 
     public void game() {
-        InputView.inputPlayers();
+        Players players = Players.from(PlayerFactory.create(InputView.inputPlayers()));
+        Dealer dealer = new Dealer();
     }
 }
