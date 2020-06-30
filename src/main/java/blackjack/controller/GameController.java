@@ -1,5 +1,7 @@
 package blackjack.controller;
 
+import blackjack.view.InputView;
+
 public class GameController {
 
     private GameController() {}
@@ -13,6 +15,6 @@ public class GameController {
     }
 
     public void game() {
-
+        InputView.inputPlayers();
     }
 }
