@@ -6,6 +6,8 @@ import blackjack.domain.user.PlayerFactory;
 import blackjack.domain.user.Players;
 import blackjack.view.InputView;
 
+import java.util.List;
+
 public class GameController {
 
     private GameController() {}
@@ -19,7 +21,15 @@ public class GameController {
     }
 
     public void game() {
-        Players players = Players.from(PlayerFactory.create(InputView.inputPlayers()));
+        Players players = initPlayers();
         Dealer dealer = new Dealer();
+    }
+
+    private Players initPlayers() {
+        List<Player> players = PlayerFactory.create(InputView.inputPlayers());
+        for (Player player : players) {
+            player.setBettingMoney(InputView.inputBettingMoney(player));
+        }
+        return Players.from(players);
     }
 }

@@ -13,4 +13,8 @@ public class User {
         this.name = name;
         this.cards = Cards.from(Collections.emptyList());
     }
+
+    public String getName() {
+        return name;
+    }
 }
