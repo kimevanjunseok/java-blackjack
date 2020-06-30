@@ -1,5 +1,6 @@
 package blackjack.domain.user;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Players {
@@ -12,5 +13,9 @@ public class Players {
 
     public static Players from(List<Player> players) {
         return new Players(players);
+    }
+
+    public List<Player> getPlayers() {
+        return Collections.unmodifiableList(players);
     }
 }

@@ -5,6 +5,7 @@ import blackjack.domain.user.Player;
 import blackjack.domain.user.PlayerFactory;
 import blackjack.domain.user.Players;
 import blackjack.view.InputView;
+import blackjack.view.OutputView;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class GameController {
     public void game() {
         Players players = initPlayers();
         Dealer dealer = new Dealer();
+        OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
     }
 
     private Players initPlayers() {
