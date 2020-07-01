@@ -1,5 +1,7 @@
 package blackjack.domain.user;
 
+import blackjack.domain.card.Cards;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +15,12 @@ public class Players {
 
     public static Players from(List<Player> players) {
         return new Players(players);
+    }
+
+    public void drawCard(Cards deck) {
+        for (Player player : players) {
+            player.drawCard(deck);
+        }
     }
 
     public List<Player> getPlayers() {

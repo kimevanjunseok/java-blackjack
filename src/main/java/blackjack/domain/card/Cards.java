@@ -1,6 +1,7 @@
 package blackjack.domain.card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cards {
@@ -13,5 +14,14 @@ public class Cards {
 
     public static Cards from(List<Card> cards) {
         return new Cards(cards);
+    }
+
+    public void add(Card card) {
+        cards.add(card);
+    }
+
+    public Card draw() {
+        Collections.shuffle(cards);
+        return cards.remove(0);
     }
 }

@@ -1,5 +1,7 @@
 package blackjack.controller;
 
+import blackjack.domain.card.CardFactory;
+import blackjack.domain.card.Cards;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.PlayerFactory;
@@ -22,8 +24,10 @@ public class GameController {
     }
 
     public void game() {
-        Players players = initPlayers();
         Dealer dealer = new Dealer();
+        Players players = initPlayers();
+        Cards deck = Cards.from(CardFactory.create());
+        initCard(dealer, players, deck);
         OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
     }
 
@@ -33,5 +37,12 @@ public class GameController {
             player.setBettingMoney(InputView.inputBettingMoney(player));
         }
         return Players.from(players);
+    }
+
+    private void initCard(Dealer dealer, Players players, Cards deck) {
+        for (int i = 0; i < 2; i ++) {
+            dealer.drawCard(deck);
+            players.drawCard(deck);
+        }
     }
 }

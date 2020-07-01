@@ -14,6 +14,10 @@ public class User {
         this.cards = Cards.from(Collections.emptyList());
     }
 
+    public void drawCard(Cards deck) {
+        cards.add(deck.draw());
+    }
+
     public String getName() {
         return name;
     }
