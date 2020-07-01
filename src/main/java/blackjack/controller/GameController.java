@@ -44,6 +44,7 @@ public class GameController {
         }
         if (dealer.canDraw()) {
             dealer.drawCard(deck);
+            OutputView.printDealerGetCard();
         }
     }
 
@@ -59,5 +60,4 @@ public class GameController {
         dealer.initDrawCard(deck);
         players.initDrawCard(deck);
     }
-
 }
