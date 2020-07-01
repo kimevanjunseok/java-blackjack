@@ -25,6 +25,32 @@ public class Cards {
         return cards.remove(0);
     }
 
+    public int score() {
+        if (hasAce()) {
+            return scoreWithAce();
+        }
+        return scoreWithoutAce();
+    }
+
+    private int scoreWithAce() {
+        int score = scoreWithoutAce();
+        if (score + 10 > 21) {
+            return score;
+        }
+        return score + 10;
+    }
+
+    private int scoreWithoutAce() {
+        return cards.stream()
+                .mapToInt(Card::score)
+                .sum();
+    }
+
+    private boolean hasAce() {
+        return cards.stream()
+                .anyMatch(Card::isAce);
+    }
+
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
     }

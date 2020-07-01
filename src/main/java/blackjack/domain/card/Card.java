@@ -14,6 +14,14 @@ public class Card {
         return new Card(denominationType, suitType);
     }
 
+    public boolean isAce() {
+        return denominationType == DenominationType.ACE;
+    }
+
+    public int score() {
+        return denominationType.getScore();
+    }
+
     @Override
     public String toString() {
         return denominationType.getSymbol() + suitType.getName();
