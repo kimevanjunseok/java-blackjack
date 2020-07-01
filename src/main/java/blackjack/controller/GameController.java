@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.domain.Answer;
 import blackjack.domain.card.CardFactory;
 import blackjack.domain.card.Cards;
 import blackjack.domain.user.Dealer;
@@ -30,7 +31,14 @@ public class GameController {
         initCard(dealer, players, deck);
         OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
         for (Player player : players.getPlayers()) {
-            InputView.inputAnswerOneMoreCard(player);
+            Answer answer;
+            do {
+                answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
+                if (answer.isYes()) {
+                    player.drawCard(deck);
+                }
+                OutputView.printUserCard(player);
+            } while (answer.isYes());
         }
     }
 
@@ -48,4 +56,5 @@ public class GameController {
             players.drawCard(deck);
         }
     }
+
 }

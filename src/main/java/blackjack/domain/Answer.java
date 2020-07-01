@@ -18,4 +18,8 @@ public enum Answer {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("대답 좀 똑바로 해라."));
     }
+
+    public boolean isYes() {
+        return this == Answer.YES;
+    }
 }
