@@ -22,4 +22,8 @@ public enum DenominationType {
         this.symbol = symbol;
         this.score = score;
     }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }

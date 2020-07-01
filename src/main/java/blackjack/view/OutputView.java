@@ -1,5 +1,7 @@
 package blackjack.view;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Cards;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.User;
@@ -16,8 +18,12 @@ public class OutputView {
         }
         System.out.println("딜러와 " + stringJoiner.toString() + "에게 2장의 나누었습니다.");
 
-        printUserCard(dealer);
+        printDealerCard(dealer);
         printPlayersCard(players);
+    }
+
+    private static void printDealerCard(Dealer dealer) {
+        System.out.println(dealer.getName() + "카드: " + dealer.getFirstCard());
     }
 
     private static void printPlayersCard(List<Player> players) {
@@ -27,6 +33,11 @@ public class OutputView {
     }
 
     public static void printUserCard(User user) {
-        System.out.println(user.getName() + "카드: ");
+        StringJoiner stringJoiner = new StringJoiner(", ");
+        Cards userDeck = user.getCards();
+        for (Card card : userDeck.getCards()) {
+            stringJoiner.add(card.toString());
+        }
+        System.out.println(user.getName() + "카드: " + stringJoiner.toString());
     }
 }

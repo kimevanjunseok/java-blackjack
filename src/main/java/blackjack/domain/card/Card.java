@@ -13,4 +13,9 @@ public class Card {
     public static Card of(final DenominationType denominationType, final SuitType suitType) {
         return new Card(denominationType, suitType);
     }
+
+    @Override
+    public String toString() {
+        return denominationType.getSymbol() + suitType.getName();
+    }
 }

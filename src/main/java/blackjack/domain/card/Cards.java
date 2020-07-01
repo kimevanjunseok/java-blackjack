@@ -24,4 +24,8 @@ public class Cards {
         Collections.shuffle(cards);
         return cards.remove(0);
     }
+
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(cards);
+    }
 }

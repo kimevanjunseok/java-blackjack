@@ -21,4 +21,8 @@ public class User {
     public String getName() {
         return name;
     }
+
+    public Cards getCards() {
+        return cards;
+    }
 }
