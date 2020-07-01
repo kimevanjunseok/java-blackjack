@@ -29,6 +29,9 @@ public class GameController {
         Cards deck = Cards.from(CardFactory.create());
         initCard(dealer, players, deck);
         OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
+        for (Player player : players.getPlayers()) {
+            InputView.inputAnswerOneMoreCard(player);
+        }
     }
 
     private Players initPlayers() {
