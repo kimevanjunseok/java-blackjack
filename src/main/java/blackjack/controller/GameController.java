@@ -51,10 +51,8 @@ public class GameController {
     }
 
     private void initCard(Dealer dealer, Players players, Cards deck) {
-        for (int i = 0; i < 2; i ++) {
-            dealer.drawCard(deck);
-            players.drawCard(deck);
-        }
+        dealer.initDrawCard(deck);
+        players.initDrawCard(deck);
     }
 
 }

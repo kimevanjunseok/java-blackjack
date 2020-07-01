@@ -17,9 +17,9 @@ public class Players {
         return new Players(players);
     }
 
-    public void drawCard(Cards deck) {
+    public void initDrawCard(Cards deck) {
         for (Player player : players) {
-            player.drawCard(deck);
+            player.initDrawCard(deck);
         }
     }
 
