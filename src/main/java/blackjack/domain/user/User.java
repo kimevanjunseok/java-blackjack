@@ -1,16 +1,19 @@
 package blackjack.domain.user;
 
 import blackjack.domain.card.Cards;
+import blackjack.domain.state.State;
 
 import java.util.Collections;
 
 public abstract class User {
 
     private final String name;
+    private State state;
     protected final Cards cards;
 
     public User(String name) {
         this.name = name;
+        this.state = State.HIT;
         this.cards = Cards.from(Collections.emptyList());
     }
 
@@ -18,14 +21,24 @@ public abstract class User {
         for (int count = 0; count < 2; count++) {
             cards.add(deck.draw());
         }
+        if (cards.score() == 21) {
+            state = State.BLACKJACK;
+        }
     }
 
     public void drawCard(Cards deck) {
         cards.add(deck.draw());
+        if (cards.score() > 21) {
+            state = State.BUST;
+        }
     }
 
     public int score() {
         return cards.score();
+    }
+
+    public void stay() {
+        state = State.STAY;
     }
 
     public abstract boolean canDraw();
