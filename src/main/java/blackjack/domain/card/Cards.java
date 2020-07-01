@@ -20,6 +20,13 @@ public class Cards {
         cards.add(card);
     }
 
+    public Card getFirstCards() {
+        if (cards.size() < 1) {
+            throw new IllegalArgumentException("카드 없는데?");
+        }
+        return cards.get(0);
+    }
+
     public Card draw() {
         Collections.shuffle(cards);
         return cards.remove(0);

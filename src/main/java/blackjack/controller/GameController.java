@@ -30,22 +30,8 @@ public class GameController {
         Cards deck = Cards.from(CardFactory.create());
         initCard(dealer, players, deck);
         OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
-        for (Player player : players.getPlayers()) {
-            Answer answer;
-            if (player.canDraw()) {
-                do {
-                    answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
-                    if (answer.isYes()) {
-                        player.drawCard(deck);
-                    }
-                    OutputView.printUserCard(player);
-                } while (answer.isYes() && player.canDraw());
-            }
-        }
-        if (dealer.canDraw()) {
-            dealer.drawCard(deck);
-            OutputView.printDealerGetCard();
-        }
+        hitPlayers(players, deck);
+        hitDealer(dealer, deck);
         OutputView.printResult(dealer, players.getPlayers());
     }
 
@@ -60,5 +46,31 @@ public class GameController {
     private void initCard(Dealer dealer, Players players, Cards deck) {
         dealer.initDrawCard(deck);
         players.initDrawCard(deck);
+    }
+
+    private void hitPlayers(Players players, Cards deck) {
+        for (Player player : players.getPlayers()) {
+            hitPlayer(player, deck);
+        }
+    }
+
+    private void hitPlayer(Player player, Cards deck) {
+        Answer answer;
+        if (player.canDraw()) {
+            do {
+                answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
+                if (answer.isYes()) {
+                    player.drawCard(deck);
+                }
+                OutputView.printUserCard(player);
+            } while (answer.isYes() && player.canDraw());
+        }
+    }
+
+    private void hitDealer(Dealer dealer, Cards deck) {
+        if (dealer.canDraw()) {
+            dealer.drawCard(deck);
+            OutputView.printDealerGetCard();
+        }
     }
 }

@@ -24,11 +24,8 @@ public abstract class User {
     }
 
     public void drawCard(Cards deck) {
-        if (state == State.HIT) {
-            cards.add(deck.draw());
-        }
+        cards.add(deck.draw());
     }
-
 
     public int score() {
         return cards.score();
