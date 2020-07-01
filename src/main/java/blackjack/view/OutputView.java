@@ -33,15 +33,35 @@ public class OutputView {
     }
 
     public static void printUserCard(User user) {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-        Cards userDeck = user.getCards();
-        for (Card card : userDeck.getCards()) {
-            stringJoiner.add(card.toString());
-        }
+        StringJoiner stringJoiner = toCardsString(user);
         System.out.println(user.getName() + "카드: " + stringJoiner.toString());
     }
 
     public static void printDealerGetCard() {
         System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
+    }
+
+    public static void printResult(Dealer dealer, List<Player> players) {
+        printDealerResult(dealer);
+        printDealerPlayers(players);
+    }
+
+    private static void printDealerResult(Dealer dealer) {
+        System.out.println(dealer.getName() + "카드: " + toCardsString(dealer).toString() + " - 결과: " + dealer.score());
+    }
+
+    private static void printDealerPlayers(List<Player> players) {
+        for (Player player : players) {
+            System.out.println(player.getName() + "카드: " + toCardsString(player).toString() + " - 결과: " + player.score());
+        }
+    }
+
+    private static StringJoiner toCardsString(User user) {
+        StringJoiner stringJoiner = new StringJoiner(", ");
+        Cards userDeck = user.getCards();
+        for (Card card : userDeck.getCards()) {
+            stringJoiner.add(card.toString());
+        }
+        return stringJoiner;
     }
 }

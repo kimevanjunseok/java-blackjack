@@ -29,6 +29,11 @@ public abstract class User {
         }
     }
 
+
+    public int score() {
+        return cards.score();
+    }
+
     public abstract boolean canDraw();
 
     public String getName() {

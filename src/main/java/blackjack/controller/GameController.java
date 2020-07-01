@@ -46,6 +46,7 @@ public class GameController {
             dealer.drawCard(deck);
             OutputView.printDealerGetCard();
         }
+        OutputView.printResult(dealer, players.getPlayers());
     }
 
     private Players initPlayers() {
