@@ -1,19 +1,16 @@
 package blackjack.domain.user;
 
 import blackjack.domain.card.Cards;
-import blackjack.domain.state.State;
 
 import java.util.Collections;
 
 public abstract class User {
 
     private final String name;
-    private State state;
     protected final Cards cards;
 
     public User(String name) {
         this.name = name;
-        this.state = State.HIT;
         this.cards = Cards.from(Collections.emptyList());
     }
 

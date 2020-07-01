@@ -55,13 +55,11 @@ public class GameController {
     }
 
     private void hitPlayer(Player player, Cards deck) {
-        Answer answer;
         if (player.canDraw()) {
+            Answer answer;
             do {
                 answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
-                if (answer.isYes()) {
-                    player.drawCard(deck);
-                }
+                answer.apply(player, deck);
                 OutputView.printUserCard(player);
             } while (answer.isYes() && player.canDraw());
         }
