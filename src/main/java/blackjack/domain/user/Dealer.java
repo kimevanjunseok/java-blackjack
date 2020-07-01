@@ -16,4 +16,9 @@ public class Dealer extends User {
         List<Card> deck = cards.getCards();
         return deck.get(0);
     }
+
+    @Override
+    public boolean canDraw() {
+        return cards.score() <= 16;
+    }
 }

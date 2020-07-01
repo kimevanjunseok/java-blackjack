@@ -5,7 +5,7 @@ import blackjack.domain.state.State;
 
 import java.util.Collections;
 
-public class User {
+public abstract class User {
 
     private final String name;
     private State state;
@@ -28,6 +28,8 @@ public class User {
             cards.add(deck.draw());
         }
     }
+
+    public abstract boolean canDraw();
 
     public String getName() {
         return name;

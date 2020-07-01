@@ -13,4 +13,9 @@ public class Player extends User {
     public void setBettingMoney(int money) {
         this.bettingMoney = BettingMoney.from(money);
     }
+
+    @Override
+    public boolean canDraw() {
+        return cards.score() < 21;
+    }
 }

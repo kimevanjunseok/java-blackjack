@@ -32,13 +32,18 @@ public class GameController {
         OutputView.printInitDrawCardNotice(dealer, players.getPlayers());
         for (Player player : players.getPlayers()) {
             Answer answer;
-            do {
-                answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
-                if (answer.isYes()) {
-                    player.drawCard(deck);
-                }
-                OutputView.printUserCard(player);
-            } while (answer.isYes());
+            if (player.canDraw()) {
+                do {
+                    answer = Answer.find(InputView.inputAnswerOneMoreCard(player));
+                    if (answer.isYes()) {
+                        player.drawCard(deck);
+                    }
+                    OutputView.printUserCard(player);
+                } while (answer.isYes() && player.canDraw());
+            }
+        }
+        if (dealer.canDraw()) {
+            dealer.drawCard(deck);
         }
     }
 
