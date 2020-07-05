@@ -14,12 +14,12 @@ public class InputView {
     }
 
     public static int inputBettingMoney(Player player) {
-        System.out.println(player.getName() + "의 배팅 금액은?");
+        System.out.println("\n" + player.getName() + "의 배팅 금액은?");
         return Integer.parseInt(scanner.nextLine());
     }
 
     public static String inputAnswerOneMoreCard(Player player) {
-        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
+        System.out.println("\n" + player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
         return scanner.nextLine();
     }
 }

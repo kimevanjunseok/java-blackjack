@@ -3,10 +3,7 @@ package blackjack.domain;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Profit {
 
@@ -17,7 +14,7 @@ public class Profit {
     }
 
     public static Profit from(Dealer dealer, List<Player> players) {
-        Map<Player, Double> profits = new HashMap<>();
+        Map<Player, Double> profits = new LinkedHashMap<>();
         for (Player player : players) {
             ResultType type = ResultType.find(dealer, player);
             profits.put(player, player.profit(type));

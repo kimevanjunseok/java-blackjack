@@ -35,6 +35,7 @@ public class GameController {
         hitDealer(dealer, deck);
         OutputView.printResult(dealer, players.getPlayers());
         Profit profit = Profit.from(dealer, players.getPlayers());
+        OutputView.printProfit(profit);
     }
 
     private Players initPlayers() {

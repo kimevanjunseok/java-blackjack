@@ -8,7 +8,6 @@ import blackjack.domain.user.Player;
 import blackjack.domain.user.User;
 
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class OutputView {
@@ -18,7 +17,7 @@ public class OutputView {
         for (Player user : players) {
             stringJoiner.add(user.getName());
         }
-        System.out.println("딜러와 " + stringJoiner.toString() + "에게 2장의 나누었습니다.");
+        System.out.println("\n딜러와 " + stringJoiner.toString() + "에게 2장의 나누었습니다.");
 
         printDealerCard(dealer);
         printPlayersCard(players);
@@ -40,10 +39,11 @@ public class OutputView {
     }
 
     public static void printDealerGetCard() {
-        System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
+        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.");
     }
 
     public static void printResult(Dealer dealer, List<Player> players) {
+        System.out.println();
         printDealerResult(dealer);
         printDealerPlayers(players);
     }
@@ -59,7 +59,7 @@ public class OutputView {
     }
 
     public static void printProfit(Profit profits) {
-        System.out.println("## 최종 수익");
+        System.out.println("\n## 최종 수익");
         System.out.println("딜러: " + profits.calculateProfitOfDealer());
         for (Player player : profits.keySet()) {
             System.out.println(player.getName() + ": " + profits.findProfitByPlayer(player));
