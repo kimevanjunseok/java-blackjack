@@ -6,6 +6,7 @@ import blackjack.domain.user.Player;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Profit {
 
@@ -28,6 +29,10 @@ public class Profit {
         return (-1) * profits.keySet().stream()
                 .mapToDouble(profits::get)
                 .sum();
+    }
+
+    public Set<Player> keySet() {
+        return profits.keySet();
     }
 
     public double findProfitByPlayer(Player player) {

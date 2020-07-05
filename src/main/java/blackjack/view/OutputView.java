@@ -1,5 +1,6 @@
 package blackjack.view;
 
+import blackjack.domain.Profit;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Cards;
 import blackjack.domain.user.Dealer;
@@ -7,6 +8,7 @@ import blackjack.domain.user.Player;
 import blackjack.domain.user.User;
 
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class OutputView {
@@ -54,6 +56,15 @@ public class OutputView {
         for (Player player : players) {
             System.out.println(player.getName() + "카드: " + toCardsString(player).toString() + " - 결과: " + player.score());
         }
+    }
+
+    public static void printProfit(Profit profits) {
+        System.out.println("## 최종 수익");
+        System.out.println("딜러: " + profits.calculateProfitOfDealer());
+        for (Player player : profits.keySet()) {
+            System.out.println(player.getName() + ": " + profits.findProfitByPlayer(player));
+        }
+
     }
 
     private static StringJoiner toCardsString(User user) {
