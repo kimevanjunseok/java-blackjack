@@ -1,5 +1,6 @@
 package blackjack.domain.user;
 
+import blackjack.domain.ResultType;
 import blackjack.domain.card.Cards;
 import blackjack.domain.state.State;
 

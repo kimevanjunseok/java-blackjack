@@ -1,5 +1,6 @@
 package blackjack.domain.user;
 
+import blackjack.domain.ResultType;
 import blackjack.domain.user.bettingmoney.BettingMoney;
 
 public class Player extends User {
@@ -8,6 +9,10 @@ public class Player extends User {
 
     public Player(String name) {
         super(name);
+    }
+
+    public double profit(ResultType type) {
+        return bettingMoney.calculateProfit(type);
     }
 
     public void setBettingMoney(int money) {

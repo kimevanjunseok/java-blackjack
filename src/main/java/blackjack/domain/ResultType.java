@@ -3,6 +3,7 @@ package blackjack.domain;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum ResultType {
@@ -23,7 +24,14 @@ public enum ResultType {
         this.earningRate = earningRate;
     }
 
-    public boolean apply(Dealer dealer, Player player) {
+    public static ResultType find(Dealer dealer, Player player) {
+        return Arrays.stream(ResultType.values())
+                .filter(type -> type.apply(dealer, player))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(""));
+    }
+
+    private boolean apply(Dealer dealer, Player player) {
         return result.apply(dealer, player);
     }
 

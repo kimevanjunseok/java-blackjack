@@ -1,5 +1,7 @@
 package blackjack.domain.user.bettingmoney;
 
+import blackjack.domain.ResultType;
+
 public class BettingMoney {
 
     private static final int MINIMUM_BETTING_MONEY = 1;
@@ -19,5 +21,9 @@ public class BettingMoney {
         if (money < MINIMUM_BETTING_MONEY) {
             throw new IllegalArgumentException("최소 배팅 금액은 $1입니다. Betting Money: " + money);
         }
+    }
+
+    public double calculateProfit(ResultType type) {
+        return money * type.getEarningRate();
     }
 }
