@@ -1,7 +1,7 @@
 package blackjack.controller;
 
 import blackjack.domain.Answer;
-import blackjack.domain.PlayersProfit;
+import blackjack.domain.Profit;
 import blackjack.domain.card.CardFactory;
 import blackjack.domain.card.Cards;
 import blackjack.domain.user.Dealer;
@@ -34,7 +34,7 @@ public class GameController {
         hitPlayers(players, deck);
         hitDealer(dealer, deck);
         OutputView.printResult(dealer, players.getPlayers());
-        PlayersProfit playersProfit = PlayersProfit.from(dealer, players.getPlayers());
+        Profit profit = Profit.from(dealer, players.getPlayers());
     }
 
     private Players initPlayers() {
