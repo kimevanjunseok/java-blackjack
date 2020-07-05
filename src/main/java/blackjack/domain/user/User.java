@@ -50,4 +50,16 @@ public abstract class User {
     public Cards getCards() {
         return cards;
     }
+
+    public boolean isBlackjack() {
+        return state == State.BLACKJACK;
+    }
+
+    public boolean isBust() {
+        return state == State.BUST;
+    }
+
+    public int compareScore(User user) {
+        return Integer.compare(score(), user.score());
+    }
 }
